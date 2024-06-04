@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Clientes</title>
+</head>
+<body>
+<form th:action="@{/controllerHandler}" method="post">
+    <select name="controllerChoice">
+        <option value="ClienteView">Cliente</option>
+        <option value="BebidaView">Bebida</option>
+        <!-- Adicione outras opções para cada controlador que você tem -->
+    </select>
+    <input type="submit" value="Submit">
+</form>
+
+<form th:action="@{/cadastro_cliente}" th:object="${cliente}" method="post">
+    <label for="nome">Nome:</label><br>
+    <input type="text" th:field="*{nome}" id="nome" name="nome"><br>
+    <input type="submit" value="Cadastrar">
+</form>
+</body>
+</html>
