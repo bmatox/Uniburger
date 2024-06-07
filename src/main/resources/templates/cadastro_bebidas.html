@@ -8,9 +8,8 @@
   <select name="controllerChoice">
     <option value="ClienteView">Cliente</option>
     <option value="BebidaView">Bebida</option>
-    <!-- Adicione outras opções para cada controlador que você tem -->
   </select>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Mudar formulário">
 </form>
 
 <form th:action="@{/cadastro_bebidas}" th:object="${bebida}" method="post">
