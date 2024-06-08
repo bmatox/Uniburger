@@ -79,9 +79,9 @@
         <option value="CardapioView" th:selected="${controllerChoice == 'CardapioView'}">Cardápio</option>
     </select>
     <input type="submit" value="Mudar formulário">
-    <form th:action="@{/exibir_cardapio}" method="get">
-        <button type="submit" class="btn btn-cardapio">Exibir Cardápio</button>
-    </form>
+</form>
+<form th:action="@{/exibir_cardapio}" method="get">
+    <button type="submit" class="btn btn-cardapio">Exibir Cardápio</button>
 </form>
 </body>
 </html>
