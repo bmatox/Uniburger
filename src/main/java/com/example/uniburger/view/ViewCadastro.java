@@ -134,8 +134,6 @@ public class ViewCadastro {
         return "cadastro_itempedido";
     }
 
-
-
     @GetMapping("/exibir_cardapio")
     public String exibirCardapio(Model model) {
         List<Cardapio> cardapio = cardapioService.getAllItems();
