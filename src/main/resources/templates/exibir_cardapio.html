@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cardápio</title>
+</head>
+<body>
+<h1>Cardápio</h1>
+<form th:action="@{/controllerHandler}" method="post">
+    <select name="controllerChoice">
+        <option value="ClienteView" th:selected="${controllerChoice == 'ClienteView'}">Cliente</option>
+        <option value="BebidaView" th:selected="${controllerChoice == 'BebidaView'}">Bebida</option>
+        <option value="ItemPedidoView" th:selected="${controllerChoice == 'ItemPedidoView'}">ItemPedido</option>
+        <option value="MesaView" th:selected="${controllerChoice == 'MesaView'}">Mesa</option>
+        <option value="PedidoView" th:selected="${controllerChoice == 'PedidoView'}">Pedido</option>
+        <option value="PratoView" th:selected="${controllerChoice == 'PratoView'}">Prato</option>
+        <option value="CardapioView" th:selected="${controllerChoice == 'CardapioView'}">Cardápio</option>
+    </select>
+    <input type="submit" value="Mudar formulário">
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Tipo</th>
+        <th>Volume</th>
+        <th>Categoria</th>
+        <th>Ingredientes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${cardapio}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.nome}"></td>
+        <td th:text="${item.preco}"></td>
+        <td th:text="${item instanceof T(com.example.uniburger.model.Bebida) ? item.tipo : ''}"></td>
+        <td th:text="${item instanceof T(com.example.uniburger.model.Bebida) ? item.volume : ''}"></td>
+        <td th:text="${item instanceof T(com.example.uniburger.model.Prato) ? item.categoria : ''}"></td>
+        <td th:text="${item instanceof T(com.example.uniburger.model.Prato) ? item.ingredientes : ''}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
