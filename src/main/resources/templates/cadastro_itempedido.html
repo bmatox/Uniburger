@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Cadastro de Clientes</title>
+    <title>Cadastro de ItemPedido</title>
 </head>
 <body>
 <form th:action="@{/controllerHandler}" method="post">
@@ -15,10 +15,13 @@
     </select>
     <input type="submit" value="Mudar formulário">
 </form>
-
-<form th:action="@{/cadastro_cliente}" th:object="${cliente}" method="post">
-    <label for="nome">Nome:</label><br>
-    <input type="text" th:field="*{nome}" id="nome" name="nome"><br>
+<form th:action="@{/cadastro_itempedido}" th:object="${itemPedido}" method="post">
+    <label for="cardapio">Cardapio:</label><br>
+    <select th:field="*{cardapio}" id="cardapio" name="cardapio">
+        <option th:each="cardapio : ${cardapios}" th:value="${cardapio.id}" th:text="${cardapio.nome}"></option>
+    </select><br>
+    <label for="quantidade">Quantidade:</label><br>
+    <input type="number" th:field="*{quantidade}" id="quantidade" name="quantidade"><br>
     <input type="submit" value="Cadastrar">
 </form>
 </body>

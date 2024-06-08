@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Cadastro de Clientes e Bebidas</title>
+  <title>Cadastro de Bebidas</title>
 </head>
 <body>
 <form th:action="@{/controllerHandler}" method="post">
   <select name="controllerChoice">
-    <option value="ClienteView">Cliente</option>
-    <option value="BebidaView">Bebida</option>
+    <option value="ClienteView" th:selected="${controllerChoice == 'ClienteView'}">Cliente</option>
+    <option value="BebidaView" th:selected="${controllerChoice == 'BebidaView'}">Bebida</option>
+    <option value="ItemPedidoView" th:selected="${controllerChoice == 'ItemPedidoView'}">ItemPedido</option>
+    <option value="MesaView" th:selected="${controllerChoice == 'MesaView'}">Mesa</option>
+    <option value="PedidoView" th:selected="${controllerChoice == 'PedidoView'}">Pedido</option>
+    <option value="PratoView" th:selected="${controllerChoice == 'PratoView'}">Prato</option>
   </select>
   <input type="submit" value="Mudar formulário">
 </form>
