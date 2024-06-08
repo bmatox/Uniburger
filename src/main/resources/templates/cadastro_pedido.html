@@ -61,7 +61,7 @@
     <select th:field="*{cliente}" id="cliente" name="cliente">
         <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
     </select><br>
-    <div th:each="item : *{itens}" th:object="${item}">
+    <div th:each="item : ${pedido.itens}" th:object="${item}">
         <label for="cardapio">Cardapio:</label><br>
         <select th:field="*{cardapio.id}" id="cardapio" name="cardapio">
             <option th:each="cardapio : ${cardapios}" th:value="${cardapio.id}" th:text="${cardapio.nome}"></option>

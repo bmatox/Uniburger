@@ -104,6 +104,13 @@ public class ViewCadastro {
     @GetMapping("/cadastro_pedido")
     public String cadastroPedido(Model model) {
         model.addAttribute("pedido", new Pedido());
+
+        // Busca todos os clientes do banco de dados
+        List<Cliente> clientes = clienteService.getAllClientes();
+
+        // Adiciona a lista de clientes ao modelo
+        model.addAttribute("clientes", clientes);
+
         return "cadastro_pedido";
     }
 
