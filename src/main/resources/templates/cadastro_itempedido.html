@@ -12,17 +12,21 @@
         <option value="MesaView" th:selected="${controllerChoice == 'MesaView'}">Mesa</option>
         <option value="PedidoView" th:selected="${controllerChoice == 'PedidoView'}">Pedido</option>
         <option value="PratoView" th:selected="${controllerChoice == 'PratoView'}">Prato</option>
+        <option value="CardapioView" th:selected="${controllerChoice == 'CardapioView'}">Cardápio</option>
     </select>
     <input type="submit" value="Mudar formulário">
 </form>
-<form th:action="@{/cadastro_itempedido}" th:object="${itemPedido}" method="post">
+<form th:object="${itemPedido}" th:action="@{/cadastro_itempedido}" method="post">
     <label for="cardapio">Cardapio:</label><br>
     <select th:field="*{cardapio}" id="cardapio" name="cardapio">
-        <option th:each="cardapio : ${cardapios}" th:value="${cardapio.id}" th:text="${cardapio.nome}"></option>
+        <option th:each="item : ${cardapio}" th:value="${item.id}" th:text="${item.nome}"></option>
     </select><br>
     <label for="quantidade">Quantidade:</label><br>
     <input type="number" th:field="*{quantidade}" id="quantidade" name="quantidade"><br>
-    <input type="submit" value="Cadastrar">
+    <button type="submit">Cadastrar Item Pedido</button>
+</form>
+<form th:action="@{/exibir_cardapio}" method="get">
+    <button type="submit" class="btn">Exibir Cardápio</button>
 </form>
 </body>
 </html>

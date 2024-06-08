@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class ViewCadastro {
 
@@ -115,6 +117,13 @@ public class ViewCadastro {
     @GetMapping("/cadastro_itempedido")
     public String cadastroItemPedido(Model model) {
         model.addAttribute("itemPedido", new ItemPedido());
+
+        // Busca todos os itens do cardapio do banco de dados
+        List<Cardapio> cardapio = cardapioService.getAllItems();
+
+        // Adiciona a lista de itens do cardapio ao modelo
+        model.addAttribute("cardapio", cardapio);
+
         return "cadastro_itempedido";
     }
 
@@ -123,6 +132,15 @@ public class ViewCadastro {
         itemPedidoService.createItemPedido(itemPedido);
         model.addAttribute("message", "Item do pedido cadastrado com sucesso!");
         return "cadastro_itempedido";
+    }
+
+
+
+    @GetMapping("/exibir_cardapio")
+    public String exibirCardapio(Model model) {
+        List<Cardapio> cardapio = cardapioService.getAllItems();
+        model.addAttribute("cardapio", cardapio);
+        return "exibir_cardapio";
     }
 
 }

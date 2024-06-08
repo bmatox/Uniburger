@@ -12,6 +12,7 @@
     <option value="MesaView" th:selected="${controllerChoice == 'MesaView'}">Mesa</option>
     <option value="PedidoView" th:selected="${controllerChoice == 'PedidoView'}">Pedido</option>
     <option value="PratoView" th:selected="${controllerChoice == 'PratoView'}">Prato</option>
+    <option value="CardapioView" th:selected="${controllerChoice == 'CardapioView'}">Cardápio</option>
   </select>
   <input type="submit" value="Mudar formulário">
 </form>
@@ -24,6 +25,9 @@
   <label for="volume">Volume:</label><br>
   <input type="number" th:field="*{volume}" id="volume" name="volume"><br>
   <input type="submit" value="Cadastrar">
+</form>
+<form th:action="@{/exibir_cardapio}" method="get">
+  <button type="submit" class="btn">Exibir Cardápio</button>
 </form>
 </body>
 </html>
