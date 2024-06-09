@@ -61,15 +61,12 @@
     <select th:field="*{cliente}" id="cliente" name="cliente">
         <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
     </select><br>
-    <div th:each="item : ${pedido.itens}" th:object="${item}">
-        <label for="cardapio">Cardapio:</label><br>
-        <select th:field="*{cardapio.id}" id="cardapio" name="cardapio">
-            <option th:each="cardapio : ${cardapios}" th:value="${cardapio.id}" th:text="${cardapio.nome}"></option>
-        </select><br>
-        <label for="quantidade">Quantidade:</label><br>
-        <input type="number" th:field="*{quantidade}" id="quantidade" name="quantidade"><br>
-    </div>
-    <input type="submit" value="Cadastrar">
+    <input type="hidden" th:field="*{cliente.id}" id="clienteId" name="clienteId">
+    <label for="itemPedido">Item de Pedido:</label><br>
+    <select id="itemPedido" name="itemPedido">
+        <option th:each="itemPedido : ${itensPedido}" th:value="${itemPedido.id}" th:text="${itemPedido.cardapio.nome}"></option>
+    </select><br>
+    <input type="submit" value="Associar">
 </form>
 <form th:action="@{/controllerHandler}" method="post">
     <h4>Escolha do formulário:</h4>

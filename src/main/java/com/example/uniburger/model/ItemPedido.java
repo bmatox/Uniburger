@@ -23,6 +23,14 @@ public class ItemPedido {
         this.quantidade = quantidade;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Cardapio getCardapio() {
         return this.cardapio;
     }

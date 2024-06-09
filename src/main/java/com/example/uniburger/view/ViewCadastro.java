@@ -111,13 +111,36 @@ public class ViewCadastro {
         // Adiciona a lista de clientes ao modelo
         model.addAttribute("clientes", clientes);
 
+        List<ItemPedido> itemPedido = itemPedidoService.getAllItemPedidos();
+        model.addAttribute("itensPedido", itemPedido);
+
         return "cadastro_pedido";
     }
 
     @PostMapping("/cadastro_pedido")
-    public String cadastrarPedido(@ModelAttribute Pedido pedido, Model model) {
-        pedidoService.createPedido(pedido);
-        model.addAttribute("message", "Pedido cadastrado com sucesso!");
+    public String cadastrarPedido(@ModelAttribute Pedido pedido, @RequestParam Long itemPedidoId, @RequestParam Long clienteId, Model model) {
+        // Busca o item de pedido pelo ID
+        ItemPedido itemPedido = itemPedidoService.getItemPedidoById(itemPedidoId);
+
+        // Busca o cliente pelo ID
+        Cliente cliente = clienteService.getClienteById(clienteId);
+
+        // Verifica se o item de pedido e o cliente existem
+        if (itemPedido != null && cliente != null) {
+            // Adiciona o item de pedido ao pedido
+            pedido.getItens().add(itemPedido);
+
+            // Associa o cliente ao pedido
+            pedido.setCliente(cliente);
+
+            // Salva o pedido
+            pedidoService.createPedido(pedido);
+
+            model.addAttribute("message", "Pedido cadastrado com sucesso!");
+        } else {
+            model.addAttribute("message", "Item de pedido ou cliente não encontrado!");
+        }
+
         return "cadastro_pedido";
     }
 
